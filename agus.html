@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¿Quieres ser mi novia?</title>
+<style>
+  body {
+    text-align: center;
+    padding-top: 50px;
+    font-family: Arial, sans-serif;
+  }
+  #contador {
+    font-size: 24px;
+    margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+
+<h1>¿Quieres ser mi novia?</h1>
+<div id="contador"></div>
+
+<script>
+  function actualizarContador() {
+    const fechaFinal = new Date('February 1, 2025 00:00:00').getTime();
+    const ahora = new Date().getTime();
+    const diferencia = fechaFinal - ahora;
+
+    const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+    const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+
+    document.getElementById("contador").innerHTML = dias + " días " + horas + " horas "
+    + minutos + " minutos " + segundos + " segundos ";
+
+    if (diferencia < 0) {
+      clearInterval(x);
+      document.getElementById("contador").innerHTML = "¡El momento ha llegado!";
+    }
+  }
+
+  const x = setInterval(actualizarContador, 1000);
+</script>
+
+</body>
+</html>
